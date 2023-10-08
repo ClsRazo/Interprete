@@ -46,27 +46,26 @@ public class Scanner {
             }
             //deteccion de tokens de un caracter
         
-                switch (estado){
-                    case 0:
-                        if(Character.isLetter(c)){
-                            estado = 13;
+            switch (estado){
+                case 0:
+                    if(Character.isLetter(c)){
+                        estado = 13;
+                        lexema += c;
+                    }
+                    else if(Character.isDigit(c)){
+                        estado = 15;
+                        lexema += c;
+
+                        /*while(Character.isDigit(c)){
                             lexema += c;
+                            i++;
+                            c = source.charAt(i);
                         }
-                        else if(Character.isDigit(c)){
-                            estado = 15;
-                            lexema += c;
-
-                            /*while(Character.isDigit(c)){
-                                lexema += c;
-                                i++;
-                                c = source.charAt(i);
-                            }
-                            Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
-                            lexema = "";
-                            estado = 0;
-                            tokens.add(t);
-                            */
-
+                        Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
+                        lexema = "";
+                        estado = 0;
+                        tokens.add(t);
+                        */
                     }
                     else if(c == '>'){
                         estado = 1;
@@ -83,19 +82,19 @@ public class Scanner {
                     else if(c == '!'){
                         estado = 10;
                         lexema += c;
-                        }
-                        else if(c=='/')
-                        {
-                            estado=26;
-                            lexema+=c;
-                        }
-                        else if(c=='"')
-                        {
-                            estado=24;
-                            lexema+=c;
-                        }
+                    }
+                    else if(c=='/')
+                    {
+                        estado=26;
+                        lexema+=c;
+                    }
+                    else if(c=='"')
+                    {
+                        estado=24;
+                        lexema+=c;
+                    }
                     break;
-                
+            
                 case 1:
                     if(c == '='){
                         lexema += c;
@@ -258,11 +257,10 @@ public class Scanner {
                         i--;
                     }
                     break;
-                    case 24:
+                case 24:
                     if(c=='\n')
                     {
-                        System.out.println("Error, la cadena no se cerró");
-                        break;
+                        i = source.length();
                     }
                     else if(c=='"')
                     {
@@ -296,9 +294,7 @@ public class Scanner {
                         estado=0;
                         lexema="";
                     }
-                break;
-                
-                
+                    break;
                 case 27:
                     if(c=='*')
                     {
@@ -337,8 +333,6 @@ public class Scanner {
                     {
                         estado=30;
                     }
-                    
-                    
                     break;
                 case 31:
                     lexema="";
@@ -347,9 +341,10 @@ public class Scanner {
                     break;
             }
 
-
         }
-        
+        if(estado == 24)
+            Interprete.error(nLinea, "Se esperaban unas comillas de cierre.");
         return tokens;
+
     }
 }
