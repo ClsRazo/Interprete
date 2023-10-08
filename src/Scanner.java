@@ -36,42 +36,44 @@ public class Scanner {
         int estado = 0;
         String lexema = "";
         char c;
-
+        
+        
         for(int i=0; i<source.length(); i++){
             c = source.charAt(i);
-
-            switch (estado){
-                case 0:
-                    if(Character.isLetter(c)){
-                        estado = 13;
-                        lexema += c;
-                    }
-                    else if(Character.isDigit(c)){
-                        estado = 15;
-                        lexema += c;
-
-                        /*while(Character.isDigit(c)){
+            //deteccion de tokens de un caracter
+        
+                switch (estado){
+                    case 0:
+                        if(Character.isLetter(c)){
+                            estado = 13;
                             lexema += c;
-                            i++;
-                            c = source.charAt(i);
                         }
-                        Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
-                        lexema = "";
-                        estado = 0;
-                        tokens.add(t);
-                        */
+                        else if(Character.isDigit(c)){
+                            estado = 15;
+                            lexema += c;
 
-                    }
-                    else if(c=='/')
-                    {
-                        estado=26;
-                        lexema+=c;
-                    }
-                    else if(c=='"')
-                    {
-                        estado=24;
-                        lexema+=c;
-                    }
+                            /*while(Character.isDigit(c)){
+                                lexema += c;
+                                i++;
+                                c = source.charAt(i);
+                            }
+                            Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
+                            lexema = "";
+                            estado = 0;
+                            tokens.add(t);
+                            */
+
+                        }
+                        else if(c=='/')
+                        {
+                            estado=26;
+                            lexema+=c;
+                        }
+                        else if(c=='"')
+                        {
+                            estado=24;
+                            lexema+=c;
+                        }
                     break;
 
                 case 13:
@@ -119,7 +121,7 @@ public class Scanner {
                     }
                     break;
                     case 24:
-                    if(Character.isLetter(c)||Character.isDigit(i)||Character.isWhitespace(c))
+                    if(!Character.isISOControl(c))
                     {
                         estado=24;
                         lexema+=c;
@@ -132,7 +134,7 @@ public class Scanner {
                     if(c=='"')
                     {
                         lexema+=c;
-                        Token t= new Token(TipoToken.STRING, lexema, lexema.substring(1, lexema.length()-1));
+                        Token t= new Token(TipoToken.STRING, lexema, lexema.substring(1, lexema.length()-2));
                         tokens.add(t);
                         estado=0;
                         lexema="";
@@ -145,7 +147,7 @@ public class Scanner {
                     }
                     else if(c=='/')
                     {
-                        estado=28;
+                        estado=30;
                     }
                     else{
                         Token t=new Token(TipoToken.SLASH, lexema, null);
@@ -158,7 +160,7 @@ public class Scanner {
                 
                 
                 case 27:
-                    if(Character.isAlphabetic(c)||Character.isDigit(i))
+                    if(!Character.isISOControl(c))
                     {
                         estado=27;
                     }
@@ -168,8 +170,7 @@ public class Scanner {
                     }
                     break;
                 case 28:
-                    //condicion 'campechana'
-                    if(c=='*'||Character.isAlphabetic(c)||Character.isDigit(c))
+                    if(!Character.isISOControl(c))
                     {
                         estado=28;
                     }
@@ -184,8 +185,7 @@ public class Scanner {
                     i--;
                     break;
                 case 30:
-                    //condicion 'campechana'
-                    if(Character.isAlphabetic(c)||Character.isDigit(c))
+                    if(!Character.isISOControl(c))
                     {
                         estado=30;
                     }
