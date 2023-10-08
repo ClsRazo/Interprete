@@ -33,8 +33,8 @@ public class Scanner {
     }
 
     public List<Token> scan() throws Exception {
-        String lexema = "";
         int estado = 0;
+        String lexema = "";
         char c;
 
         for(int i=0; i<source.length(); i++){
@@ -43,11 +43,11 @@ public class Scanner {
             switch (estado){
                 case 0:
                     if(Character.isLetter(c)){
-                        estado = 9;
+                        estado = 13;
                         lexema += c;
                     }
                     else if(Character.isDigit(c)){
-                        estado = 11;
+                        estado = 15;
                         lexema += c;
 
                         /*while(Character.isDigit(c)){
@@ -55,22 +55,21 @@ public class Scanner {
                             i++;
                             c = source.charAt(i);
                         }
-                        Token t = new Token(TipoToken.NUMBER, lexema);
+                        Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
                         lexema = "";
                         estado = 0;
                         tokens.add(t);
                         */
-                    }
 
+                    }
                     break;
 
-                case 9:
-                    if(Character.isLetter(c) || Character.isDigit(c)){
-                        estado = 9;
+                case 13:
+                    if(Character.isLetterOrDigit(c)){
+                        estado = 13;
                         lexema += c;
                     }
                     else{
-                        // Vamos a crear el Token de identificador o palabra reservada
                         TipoToken tt = palabrasReservadas.get(lexema);
 
                         if(tt == null){
@@ -85,11 +84,13 @@ public class Scanner {
                         estado = 0;
                         lexema = "";
                         i--;
+
                     }
                     break;
-                case 11:
+
+                case 15:
                     if(Character.isDigit(c)){
-                        estado = 11;
+                        estado = 15;
                         lexema += c;
                     }
                     else if(c == '.'){
@@ -108,6 +109,8 @@ public class Scanner {
                     }
                     break;
             }
+
+
         }
 
 
