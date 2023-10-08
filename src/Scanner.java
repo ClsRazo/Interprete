@@ -120,25 +120,27 @@ public class Scanner {
                         i--;
                     }
                     break;
-                    case 24:
-                    if(!Character.isISOControl(c))
-                    {
-                        estado=24;
-                        lexema+=c;
-                    }
+                case 24:
                     if(c=='\n')
                     {
                         System.out.println("Error, la cadena no se cerró");
                         break;
                     }
-                    if(c=='"')
+                    else if(c=='"')
                     {
                         lexema+=c;
-                        Token t= new Token(TipoToken.STRING, lexema, lexema.substring(1, lexema.length()-2));
+                        Token t= new Token(TipoToken.STRING, lexema, lexema.substring(1, lexema.length()-1));
                         tokens.add(t);
                         estado=0;
                         lexema="";
                     }
+                    else
+                    {
+                        estado=24;
+                        lexema+=c;
+                    }
+                    
+                    
                     break;
                 case 26:
                     if(c=='*')
@@ -160,23 +162,27 @@ public class Scanner {
                 
                 
                 case 27:
-                    if(!Character.isISOControl(c))
-                    {
-                        estado=27;
-                    }
                     if(c=='*')
                     {
                         estado=28;
                     }
+                    else
+                    {
+                        estado=27;
+                    }
+                    
                     break;
                 case 28:
-                    if(!Character.isISOControl(c))
+                    if(c=='/')
+                    {
+                        estado=29;
+                    }
+                    else if(c == '*')
                     {
                         estado=28;
                     }
-                    else if(c=='/')
-                    {
-                        estado=29;
+                    else {
+                        estado = 27;
                     }
                     break;
                 case 29:
@@ -185,19 +191,21 @@ public class Scanner {
                     i--;
                     break;
                 case 30:
-                    if(!Character.isISOControl(c))
-                    {
-                        estado=30;
-                    }
                     if(c=='\n')
                     {
                         estado=31;
                     }
+                    else
+                    {
+                        estado=30;
+                    }
+                    
                     
                     break;
                 case 31:
                     lexema="";
                     estado=0;
+                    i--;
                     break;
             }
 
