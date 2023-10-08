@@ -62,6 +62,16 @@ public class Scanner {
                         */
 
                     }
+                    else if(c=='/')
+                    {
+                        estado=26;
+                        lexema+=c;
+                    }
+                    else if(c=='"')
+                    {
+                        estado=24;
+                        lexema+=c;
+                    }
                     break;
 
                 case 13:
@@ -107,6 +117,87 @@ public class Scanner {
                         lexema = "";
                         i--;
                     }
+                    break;
+                    case 24:
+                    if(Character.isLetter(c)||Character.isDigit(i)||Character.isWhitespace(c))
+                    {
+                        estado=24;
+                        lexema+=c;
+                    }
+                    if(c=='\n')
+                    {
+                        System.out.println("Error, la cadena no se cerró");
+                        break;
+                    }
+                    if(c=='"')
+                    {
+                        lexema+=c;
+                        Token t= new Token(TipoToken.STRING, lexema, lexema.substring(1, lexema.length()-1));
+                        tokens.add(t);
+                        estado=0;
+                        lexema="";
+                    }
+                    break;
+                case 26:
+                    if(c=='*')
+                    {
+                        estado=27;
+                    }
+                    else if(c=='/')
+                    {
+                        estado=28;
+                    }
+                    else{
+                        Token t=new Token(TipoToken.SLASH, lexema, null);
+                        tokens.add(t);
+                        i--;
+                        estado=0;
+                        lexema="";
+                    }
+                break;
+                
+                
+                case 27:
+                    if(Character.isAlphabetic(c)||Character.isDigit(i))
+                    {
+                        estado=27;
+                    }
+                    if(c=='*')
+                    {
+                        estado=28;
+                    }
+                    break;
+                case 28:
+                    //condicion 'campechana'
+                    if(c=='*'||Character.isAlphabetic(c)||Character.isDigit(c))
+                    {
+                        estado=28;
+                    }
+                    else if(c=='/')
+                    {
+                        estado=29;
+                    }
+                    break;
+                case 29:
+                    estado=0;
+                    lexema="";
+                    i--;
+                    break;
+                case 30:
+                    //condicion 'campechana'
+                    if(Character.isAlphabetic(c)||Character.isDigit(c))
+                    {
+                        estado=30;
+                    }
+                    if(c=='\n')
+                    {
+                        estado=31;
+                    }
+                    
+                    break;
+                case 31:
+                    lexema="";
+                    estado=0;
                     break;
             }
 
