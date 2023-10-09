@@ -93,6 +93,83 @@ public class Scanner {
                         estado=24;
                         lexema+=c;
                     }
+                    else if(c==';')
+                    {
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.SEMICOLON, lexema, null));
+                        estado=0;
+                        lexema="";
+                    }
+                    else if(c=='+')
+                    { 
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.PLUS, lexema,null) );
+                        lexema="";
+                        estado=0; 
+                    }
+                    else if(c=='-')
+                    {
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.MINUS, lexema,null) );
+                        lexema="";
+                        estado=0; 
+                    }
+                    else if(c=='*')
+                    {
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.STAR, lexema,null) );
+                        lexema="";
+                        estado=0; 
+                    }
+                    
+                    
+                    else if(c=='.')
+                    {
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.DOT, lexema,null) );
+                        lexema="";
+                        estado=0; 
+                    }
+                    else if(c==',')
+                    {
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.COMMA, lexema,null) );
+                        lexema="";
+                        estado=0; 
+                    }
+                    else if(c=='(')
+                    {
+                        lexema+=c;  
+                        tokens.add(new Token(TipoToken.LEFT_PAREN, lexema,null) );
+                        lexema="";
+                        estado=0; 
+
+                    }
+                    else if(c==')')
+                    {
+                        lexema+=c;  
+                        tokens.add(new Token(TipoToken.RIGHT_PAREN, lexema,null) );
+                        lexema="";
+                        estado=0; 
+
+                    }
+                    else if(c=='{')
+                    {
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.LEFT_BRACE, lexema,null) );
+                        lexema="";
+                        estado=0; 
+                    }
+                    else if(c=='}')
+                    {
+                        lexema+=c;
+                        tokens.add(new Token(TipoToken.RIGHT_BRACE, lexema,null) );
+                        lexema="";
+                        estado=0; 
+                    }else if(c == '[' || c == ']' || c == '$' || c == '%' || c == '&' || c == '_' || c == '#'){    
+                        i = source.length();                      
+                        Interprete.error(nLinea, "Caracter no definido en el lenguaje.");                                              
+                    }
                     break;
             
                 case 1:
