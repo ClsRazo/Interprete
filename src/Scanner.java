@@ -33,40 +33,30 @@ public class Scanner {
     }
 
     public List<Token> scan() throws Exception {
-        int estado = 0, nLinea=0;
+        int estado = 0, nLinea=1;
         String lexema = "";
         char c;
         
-
         for(int i=0; i<source.length(); i++){
             c = source.charAt(i);
             //Para el contador de lineas para errores
             if(c == '\n'){
                 nLinea++;
             }
-            //deteccion de tokens de un caracter
-        
+            
             switch (estado){
                 case 0:
+                    //Para detectar identificadores y palabras reservadas
                     if(Character.isLetter(c)){
                         estado = 13;
                         lexema += c;
                     }
+                    //Para identificar numeros
                     else if(Character.isDigit(c)){
                         estado = 15;
                         lexema += c;
-
-                        /*while(Character.isDigit(c)){
-                            lexema += c;
-                            i++;
-                            c = source.charAt(i);
-                        }
-                        Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
-                        lexema = "";
-                        estado = 0;
-                        tokens.add(t);
-                        */
                     }
+                    //Para operadores relacionales
                     else if(c == '>'){
                         estado = 1;
                         lexema += c;
@@ -83,16 +73,19 @@ public class Scanner {
                         estado = 10;
                         lexema += c;
                     }
+                    //Para comentarios
                     else if(c=='/')
                     {
                         estado=26;
                         lexema+=c;
                     }
+                    //Para cadenasentre comillas
                     else if(c=='"')
                     {
                         estado=24;
                         lexema+=c;
                     }
+                    //Para tokens de un solo caracter
                     else if(c==';')
                     {
                         lexema+=c;
@@ -121,8 +114,6 @@ public class Scanner {
                         lexema="";
                         estado=0; 
                     }
-                    
-                    
                     else if(c=='.')
                     {
                         lexema+=c;
@@ -166,12 +157,14 @@ public class Scanner {
                         tokens.add(new Token(TipoToken.RIGHT_BRACE, lexema,null) );
                         lexema="";
                         estado=0; 
-                    }else if(c == '[' || c == ']' || c == '$' || c == '%' || c == '&' || c == '_' || c == '#'){    
+                    }
+                    //Para caracteres no definidos en el lenguaje
+                    else if(c == '[' || c == ']' || c == '$' || c == '%' || c == '&' || c == '_' || c == '#'){    
                         i = source.length();                      
                         Interprete.error(nLinea, "Caracter no definido en el lenguaje.");                                              
                     }
                     break;
-            
+                //Para > y sus combinaciones
                 case 1:
                     if(c == '='){
                         lexema += c;
@@ -187,6 +180,7 @@ public class Scanner {
                         i--;
                     }
                     break;
+                //Para < y sus combinaciones
                 case 4:
                     if(c == '='){
                         lexema += c;
@@ -202,6 +196,7 @@ public class Scanner {
                         i--;
                     }
                     break;
+                //Para = y sus combinaciones
                 case 7:
                     if(c == '='){
                         lexema += c;
@@ -217,6 +212,7 @@ public class Scanner {
                         i--;
                     }
                     break;
+                //Para ! y sus combinaciones
                 case 10:
                     if(c == '='){
                         lexema += c;
@@ -232,6 +228,7 @@ public class Scanner {
                         i--;
                     }
                     break;
+                //Para identificadores y palabras reservadas
                 case 13:
                     if(Character.isLetterOrDigit(c)){
                         estado = 13;
@@ -248,14 +245,12 @@ public class Scanner {
                             Token t = new Token(tt, lexema);
                             tokens.add(t);
                         }
-
                         estado = 0;
                         lexema = "";
                         i--;
-
                     }
                     break;
-
+                //Para numeros
                 case 15:
                     if(Character.isDigit(c)){
                         estado = 15;
@@ -277,6 +272,7 @@ public class Scanner {
                         i--;
                     }
                     break;
+                //Para numeros flotantes
                 case 16:
                     if(Character.isDigit(c)){
                         estado = 17;
@@ -286,6 +282,7 @@ public class Scanner {
                         Interprete.error(nLinea, "Se esperaba un digito.");
                     }
                     break;
+                //Para numeros flotantes con E
                 case 17:
                     if(Character.isDigit(c)){
                         estado = 17;
@@ -301,6 +298,7 @@ public class Scanner {
                         i--;
                     }
                     break;
+                //Para numeros flotantes con E
                 case 18:
                     if(c == '+' || c == '-'){
                         estado = 19;
@@ -313,6 +311,7 @@ public class Scanner {
                         Interprete.error(nLinea, "Se esperaba un signo (+,-) o un digito.");
                     }
                     break;
+                //Para numeros
                 case 19:
                     if(Character.isDigit(c)){
                         estado = 20;
@@ -322,6 +321,7 @@ public class Scanner {
                         Interprete.error(nLinea, "Se esperaba un digito.");
                     }
                     break;
+                //Para generar token de numeros con E
                 case 20:
                     if(Character.isDigit(c)){
                         estado = 20;
@@ -334,6 +334,7 @@ public class Scanner {
                         i--;
                     }
                     break;
+                //Para Strings
                 case 24:
                     if(c=='\n')
                     {
@@ -352,9 +353,8 @@ public class Scanner {
                         estado=24;
                         lexema+=c;
                     }
-                    
-                    
                     break;
+                //Para comentarios multilinea o de una sola linea
                 case 26:
                     if(c=='*')
                     {
@@ -372,6 +372,7 @@ public class Scanner {
                         lexema="";
                     }
                     break;
+                //Continuacion de comentarios
                 case 27:
                     if(c=='*')
                     {
@@ -381,8 +382,8 @@ public class Scanner {
                     {
                         estado=27;
                     }
-                    
                     break;
+                //Continuacion de comentarios
                 case 28:
                     if(c=='/')
                     {
@@ -396,11 +397,13 @@ public class Scanner {
                         estado = 27;
                     }
                     break;
+                //Continuacion de comentarios
                 case 29:
                     estado=0;
                     lexema="";
                     i--;
                     break;
+                //Continuacion de comentarios
                 case 30:
                     if(c=='\n')
                     {
@@ -411,6 +414,7 @@ public class Scanner {
                         estado=30;
                     }
                     break;
+                //Continuacion de comentarios
                 case 31:
                     lexema="";
                     estado=0;
@@ -419,9 +423,9 @@ public class Scanner {
             }
 
         }
+        //Para error en caso de no cerrar comillas
         if(estado == 24)
-            Interprete.error(nLinea, "Se esperaban unas comillas de cierre.");
+            Interprete.error(nLinea-1, "Se esperaban unas comillas de cierre.");
         return tokens;
-
     }
 }
