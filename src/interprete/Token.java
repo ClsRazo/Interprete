@@ -7,9 +7,9 @@ package interprete;
 
 public class Token {
 
-    final TipoToken tipo;
-    final String lexema;
-    final Object literal;
+    public final TipoToken tipo;
+    public final String lexema;
+    public final Object literal;
 
     public Token(TipoToken tipo, String lexema) {
         this.tipo = tipo;
