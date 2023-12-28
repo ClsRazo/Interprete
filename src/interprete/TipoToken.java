@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package interprete;
+
 public enum TipoToken {
     // Tokens de un sólo caracter
     LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -18,3 +25,4 @@ public enum TipoToken {
 
     EOF
 }
+

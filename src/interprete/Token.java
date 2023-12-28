@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package interprete;
+
 public class Token {
 
     final TipoToken tipo;
@@ -19,4 +26,9 @@ public class Token {
     public String toString() {
         return "<" + tipo + " " + lexema + " " + literal + ">";
     }
+
+    public Object getLiteral(){
+        return literal;
+    }
 }
+

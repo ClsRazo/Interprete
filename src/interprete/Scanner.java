@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package interprete;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -161,7 +168,8 @@ public class Scanner {
                     //Para caracteres no definidos en el lenguaje
                     else if(c == '[' || c == ']' || c == '$' || c == '%' || c == '&' || c == '_' || c == '#'){    
                         i = source.length();                      
-                        Interprete.error(nLinea, "Caracter no definido en el lenguaje.");                                              
+                        Interprete.error(nLinea, "Caracter no definido en el lenguaje.");
+                                                                      
                     }
                     break;
                 //Para > y sus combinaciones
@@ -423,9 +431,11 @@ public class Scanner {
             }
 
         }
+        tokens.add(new Token(TipoToken.EOF, "", null));
         //Para error en caso de no cerrar comillas
         if(estado == 24)
             Interprete.error(nLinea-1, "Se esperaban unas comillas de cierre.");
         return tokens;
     }
 }
+
