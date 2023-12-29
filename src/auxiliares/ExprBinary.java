@@ -70,7 +70,7 @@ public class ExprBinary extends Expression{
                     // Maneja un error, ya que no puedes sumar estos tipos de operandos
                     throw new RuntimeException("Error semántico: No se puede sumar " + leftValue + " y " + rightValue);
                 }
-            // Agrega casos para otros operadores aquí
+            // Agregar el resto de casos
 
             default:
                 throw new RuntimeException("Operador no soportado: " + operator.lexema);
