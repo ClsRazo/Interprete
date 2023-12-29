@@ -6,4 +6,9 @@ public class StmtReturn extends Statement {
     public StmtReturn(Expression value) {
         this.value = value;
     }
+
+    @Override
+    public void exec(){
+        
+    }
 }

@@ -19,4 +19,9 @@ public class ExprAssign extends Expression{
         this.name = name;
         this.value = value;
     }
+
+    @Override
+    public Object solve(){
+        return null;
+    }
 }

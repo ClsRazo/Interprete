@@ -10,4 +10,9 @@ public class StmtIf extends Statement {
         this.thenBranch = thenBranch;
         this.elseBranch = elseBranch;
     }
+
+    @Override
+    public void exec(){
+        
+    }
 }

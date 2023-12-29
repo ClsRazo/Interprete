@@ -14,4 +14,9 @@ public class ExprCallFunction extends Expression{
         // this.paren = paren;
         this.arguments = arguments;
     }
+
+    @Override
+    public Object solve(){
+        return null;
+    }
 }

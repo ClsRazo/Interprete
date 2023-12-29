@@ -11,4 +11,9 @@ public class ExprSuper extends Expression {
         // this.keyword = keyword;
         this.method = method;
     }
+
+    @Override
+    public Object solve(){
+        return null;
+    }
 }

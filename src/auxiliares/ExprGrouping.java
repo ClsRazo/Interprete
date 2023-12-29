@@ -6,4 +6,9 @@ public class ExprGrouping extends Expression {
     public ExprGrouping(Expression expression) {
         this.expression = expression;
     }
+
+    @Override
+    public Object solve(){
+        return null;
+    }
 }

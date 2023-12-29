@@ -1,6 +1,5 @@
 package auxiliares;
 
-import javax.swing.plaf.nimbus.State;
 import java.util.List;
 
 public class StmtBlock extends Statement{
@@ -8,5 +7,10 @@ public class StmtBlock extends Statement{
 
     public StmtBlock(List<Statement> statements) {
         this.statements = statements;
+    }
+
+    @Override
+    public void exec(){
+        
     }
 }

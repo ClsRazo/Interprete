@@ -14,4 +14,9 @@ public class StmtClass extends Statement {
         this.superclass = superclass;
         this.methods = methods;
     }
+
+    @Override
+    public void exec(){
+        
+    }
 }

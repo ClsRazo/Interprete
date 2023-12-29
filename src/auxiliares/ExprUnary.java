@@ -10,4 +10,9 @@ public class ExprUnary extends Expression{
         this.operator = operator;
         this.right = right;
     }
+
+    @Override
+    public Object solve(){
+        return null;
+    }
 }

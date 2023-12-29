@@ -10,4 +10,9 @@ public class StmtVar extends Statement {
         this.name = name;
         this.initializer = initializer;
     }
+    
+    @Override
+    public void exec(){
+        
+    }
 }

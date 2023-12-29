@@ -6,4 +6,9 @@ public class StmtExpression extends Statement {
     public StmtExpression(Expression expression) {
         this.expression = expression;
     }
+
+    @Override
+    public void exec(){
+        
+    }
 }

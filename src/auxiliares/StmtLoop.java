@@ -8,4 +8,9 @@ public class StmtLoop extends Statement {
         this.condition = condition;
         this.body = body;
     }
+
+    @Override
+    public void exec(){
+        
+    }
 }

@@ -14,4 +14,9 @@ public class StmtFunction extends Statement {
         this.params = params;
         this.body = body;
     }
+
+    @Override
+    public void exec(){
+        
+    }
 }
