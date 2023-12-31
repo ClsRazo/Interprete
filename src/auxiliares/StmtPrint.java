@@ -1,5 +1,7 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
+
 public class StmtPrint extends Statement {
     final Expression expression;
 
@@ -8,7 +10,8 @@ public class StmtPrint extends Statement {
     }
 
     @Override
-    public void exec(){
-        
+    public void exec(TablaSimbolos tabla){
+        Object valor=expression.solve();
+        System.out.println(""+valor);
     }
 }

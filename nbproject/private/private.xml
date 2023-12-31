@@ -3,7 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Carlo/OneDrive/Documentos/5to%20Semestre/Compiladores/2doParcial/ProyectoFinal/Interprete/src/interprete/ASDR.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprVariable.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtBlock.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/interprete/Interprete.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtExpression.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/interprete/ASDR.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtIf.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/Statement.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtReturn.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtLoop.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtVar.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtClass.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprBinary.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/Expression.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtPrint.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/interprete/AnalizadorSem.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/interprete/TablaSimbolos.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtFunction.java</file>
         </group>
     </open-files>
 </project-private>

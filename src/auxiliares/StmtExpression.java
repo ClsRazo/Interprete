@@ -1,5 +1,7 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
+
 public class StmtExpression extends Statement {
     final Expression expression;
 
@@ -8,7 +10,7 @@ public class StmtExpression extends Statement {
     }
 
     @Override
-    public void exec(){
+    public void exec(TablaSimbolos tabla){
         
     }
 }

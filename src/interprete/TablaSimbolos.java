@@ -1,0 +1,47 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package interprete;
+
+import java.util.HashMap;
+
+/**
+ *
+ * @author pande
+ */
+public class TablaSimbolos {
+    private HashMap<Object, Double> tablasimb;
+    
+    //constructor
+    public TablaSimbolos()
+    {
+        //aqui definimos a la tabla de simbolos como un hashmap
+        this.tablasimb= new HashMap<>();
+    }
+    
+    public boolean yaExiste(Object name)
+    {
+        if(tablasimb.containsKey(name))
+        { //si ya está la variable en el mapa de memoria, retorna true
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public boolean Indefinido(Object name)
+    {
+        if(!tablasimb.containsKey(name))
+            return true;
+        else
+            return false;
+        
+    }
+    
+    public void agregarSimbolo(Object name, Double value)
+    {
+        tablasimb.put(name, value);
+    }
+    
+}

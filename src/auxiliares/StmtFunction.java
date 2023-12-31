@@ -1,5 +1,6 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
 import interprete.Token;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class StmtFunction extends Statement {
     }
 
     @Override
-    public void exec(){
-        
+    public void exec(TablaSimbolos tabla){
+
     }
 }

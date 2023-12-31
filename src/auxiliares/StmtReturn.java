@@ -1,5 +1,7 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
+
 public class StmtReturn extends Statement {
     final Expression value;
 
@@ -8,7 +10,8 @@ public class StmtReturn extends Statement {
     }
 
     @Override
-    public void exec(){
-        
+    public void exec(TablaSimbolos tabla){
+        Object valor=value.solve();
+        //return valor;
     }
 }

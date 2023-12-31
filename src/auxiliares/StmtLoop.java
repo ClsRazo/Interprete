@@ -1,5 +1,7 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
+
 public class StmtLoop extends Statement {
     final Expression condition;
     final Statement body;
@@ -10,7 +12,10 @@ public class StmtLoop extends Statement {
     }
 
     @Override
-    public void exec(){
-        
+    public void exec(TablaSimbolos tabla){
+        /*while(condition.solve())
+        {
+            body.exec();
+        }*/
     }
 }

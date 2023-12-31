@@ -1,5 +1,7 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
+
 public class StmtIf extends Statement {
     final Expression condition;
     final Statement thenBranch;
@@ -12,7 +14,14 @@ public class StmtIf extends Statement {
     }
 
     @Override
-    public void exec(){
-        
+    public void exec(TablaSimbolos tabla){
+        boolean evaluacion = (boolean) condition.solve();
+        if(evaluacion==true)
+        {
+            thenBranch.exec(tabla);
+        }if(elseBranch!=null)
+            {
+                elseBranch.exec(tabla);
+        }
     }
 }

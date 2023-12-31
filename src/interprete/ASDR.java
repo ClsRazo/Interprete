@@ -12,7 +12,7 @@ public class ASDR{
     private boolean hayErrores = false;
     private Token preanalisis;
     private final List<Token> tokens;
-
+    public final TablaSimbolos tabla = new TablaSimbolos();
     public ASDR(List<Token> tokens){
         this.tokens = tokens;
         preanalisis = this.tokens.get(i);
@@ -92,7 +92,9 @@ public class ASDR{
                 Expression exprV = VAR_INIT();
                 if(preanalisis.tipo == TipoToken.SEMICOLON){
                     match(TipoToken.SEMICOLON);
+                    tabla.agregarSimbolo(nombre, (double)exprV.solve());
                     return new StmtVar(nombre, exprV);
+                    
                 }else{
                     hayErrores = true;
                     System.out.println("Se esperaba un ';'");
