@@ -92,7 +92,7 @@ public class ASDR{
                 Expression exprV = VAR_INIT();
                 if(preanalisis.tipo == TipoToken.SEMICOLON){
                     match(TipoToken.SEMICOLON);
-                    tabla.agregarSimbolo(nombre, (double)exprV.solve());
+                    //tabla.agregarSimbolo(nombre, (double)exprV.solve());
                     return new StmtVar(nombre, exprV);
                     
                 }else{
