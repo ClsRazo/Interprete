@@ -18,7 +18,7 @@ public class TablaSimbolos {
         //aqui definimos a la tabla de simbolos como un hashmap
         this.tablasimb= new HashMap<>();
     } 
-    public boolean yaExiste(Object name)
+    public boolean yaExiste(String name)
     {
         if(tablasimb.containsKey(name))
         { //si ya está la variable en el mapa de memoria, retorna true
@@ -35,7 +35,10 @@ public class TablaSimbolos {
     {
         return tablasimb.get(name);
     }
-    
+    public void modificarvalor(String name, Object valor)
+    {
+        tablasimb.put(name, valor);
+    }
     
     
 }

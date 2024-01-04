@@ -22,17 +22,8 @@ public class ExprAssign extends Expression{
     }
 
     @Override
-    public Object solve(TablaSimbolos tabla){
-        //si hay una asignación, 
-        if(value.solve()!=null)
-        {
-            if(tabla.yaExiste(name.toString()))
-            {
-                tabla.modificarvalor(name.lexema, value.solve());
-            }else{
-                tabla.agregarSimbolo(name.lexema, value.solve());
-            }
-        }
+    public Object solve(){
+       
         return null;
     }
 }
