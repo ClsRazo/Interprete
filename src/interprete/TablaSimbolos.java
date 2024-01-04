@@ -11,15 +11,13 @@ import java.util.HashMap;
  * @author pande
  */
 public class TablaSimbolos {
-    private HashMap<Object, Double> tablasimb;
-    
+    private HashMap<String, Object> tablasimb;
     //constructor
     public TablaSimbolos()
     {
         //aqui definimos a la tabla de simbolos como un hashmap
         this.tablasimb= new HashMap<>();
-    }
-    
+    } 
     public boolean yaExiste(Object name)
     {
         if(tablasimb.containsKey(name))
@@ -29,19 +27,15 @@ public class TablaSimbolos {
             return false;
         }
     }
-    
-    public boolean Indefinido(Object name)
-    {
-        if(!tablasimb.containsKey(name))
-            return true;
-        else
-            return false;
-        
-    }
-    
-    public void agregarSimbolo(Object name, Double value)
+    public void agregarSimbolo(String name, Object value)
     {
         tablasimb.put(name, value);
     }
+    public Object obtenervalor(String name)
+    {
+        return tablasimb.get(name);
+    }
+    
+    
     
 }

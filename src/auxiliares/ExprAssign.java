@@ -5,6 +5,7 @@
  */
 package auxiliares;
 
+import interprete.TablaSimbolos;
 import interprete.Token;
 
 /**
@@ -16,12 +17,22 @@ public class ExprAssign extends Expression{
     final Expression value;
 
     public ExprAssign(Token name, Expression value) {
-        this.name = name;
-        this.value = value;
+        this.name = name;//nombrevariable
+        this.value = value; //asignación
     }
 
     @Override
-    public Object solve(){
+    public Object solve(TablaSimbolos tabla){
+        //si hay una asignación, 
+        if(value.solve()!=null)
+        {
+            if(tabla.yaExiste(name.toString()))
+            {
+                tabla.modificarvalor(name.lexema, value.solve());
+            }else{
+                tabla.agregarSimbolo(name.lexema, value.solve());
+            }
+        }
         return null;
     }
 }
