@@ -16,11 +16,22 @@ import java.util.List;
  * @author pande
  */
 public class AnalizadorSem {
-    public void AnalizadorSem(List<Statement> lista, TablaSimbolos tabla)
+    public void AnalizadorSem(List<Statement> lista)
     {
+        //tabla "principal"
+        TablaSimbolos tabla=new TablaSimbolos();
+        
         for(Statement st:lista)
         {
-            st.exec(tabla); 
+            if(st instanceof StmtIf || st instanceof StmtLoop)
+            {
+                //cada que se cree una nueva tabla, la tabla principal pasa como externa (bloque superior)
+                TablaSimbolos tactual=new TablaSimbolos(tabla);
+                st.exec(tactual);
+            }else{
+                st.exec(tabla); 
+            }
+            
         }
     }
     
