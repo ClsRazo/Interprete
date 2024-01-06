@@ -9,6 +9,6 @@ public class ExprGrouping extends Expression {
 
     @Override
     public Object solve(){
-        return null;
-    }
+         // las expresiones se retornan con su valor resuelto, ya sea boolean o numerico  
+    return expression.solve();
 }
