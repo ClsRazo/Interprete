@@ -15,7 +15,24 @@ public class ExprLogical extends Expression{
 
     @Override
     public Object solve(){
-        return null;
+        Object leftValue= left.solve();
+        Object rightValue = right.solve();
+
+        switch (operator.tipo) {
+            case AND:
+                return isTruthy(leftValue) && isTruthy(rightValue);
+            case OR:
+                return isTruthy(leftValue) || isTruthy(rightValue);
+            default:
+            throw new RuntimeException("Operador lógico no soportado: " + operator.lexema);
+        }
+    }
+
+    //Función auxiliar para verificar si un valor es verdadero (truthy)
+    private boolean isTruthy(Object value) {
+        if (value == null) return false;
+        if (value instanceof Boolean) return (boolean) value;
+        return true;
     }
 }
 
