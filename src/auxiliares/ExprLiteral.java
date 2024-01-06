@@ -9,6 +9,7 @@ public class ExprLiteral extends Expression {
 
     @Override
     public Object solve(){
-        return null;
+         public Object solve(){
+        return value;
     }
 }
