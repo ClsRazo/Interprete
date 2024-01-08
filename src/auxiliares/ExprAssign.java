@@ -23,7 +23,7 @@ public class ExprAssign extends Expression{
 
     @Override
     public Object solve(){
-       
-        return null;
+        //Solo devuelve la expresión resuelta o debe checar y modificar la variable en la tabla de simbolos?
+        return value.solve();
     }
 }

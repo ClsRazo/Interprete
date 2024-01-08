@@ -20,14 +20,12 @@ public class StmtFunction extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-        if(tabla.yaExiste(name.lexema)) //función encontrada
-        {
+        if(tabla.yaExiste(name.lexema)){ //función encontrada
             /*procedimiento para tokens de parámetros */
 
 
             //ejecución del bloque
-            if(body!=null)
-            {
+            if(body!=null){
                 //ejecutar el bloque con la tabla de símbolos que se tiene hasta el momento
                 body.exec(tabla);
             }else{

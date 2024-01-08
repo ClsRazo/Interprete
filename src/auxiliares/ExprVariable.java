@@ -12,7 +12,7 @@ public class ExprVariable extends Expression {
 
     @Override
     public Object solve(){
-        
-        return null;
+        //Solo devuelve o checa en la tabla de simbolos que exista?
+        return name;
     }
 }
