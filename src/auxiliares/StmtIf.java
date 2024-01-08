@@ -17,11 +17,11 @@ public class StmtIf extends Statement {
     public void exec(TablaSimbolos tabla){
         if(condition.solve(tabla) instanceof Boolean){
             boolean evaluacion = (boolean) condition.solve(tabla);
-            if(evaluacion){
+            if(evaluacion == true){
                 if(thenBranch!=null)
                     thenBranch.exec(tabla);
                 else{
-                    System.out.println("ERROR: Sentencia IF sin cuerpo");
+                    throw new RuntimeException("Error: Sentencia IF sin cuerpo");
                 }
             }else if(elseBranch!=null){
                 elseBranch.exec(tabla);
