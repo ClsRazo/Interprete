@@ -52,26 +52,39 @@ public class TablaSimbolos {
     }
     
     public void agregarSimbolo(String name, Object value){
-        if(texterna!=null){
-            if(texterna.yaExiste(name)){
+       if(texterna!=null)
+       {
+            if (texterna.yaExiste(name)) {
                 throw new RuntimeException("ERROR: Variable ya declarada");
+            }else{
+                tablasimb.put(name, value);
             }
-        }else{
-            tablasimb.put(name, value);
-        }
+       }else{
+            if (tablasimb.containsKey(name)) {
+                throw new RuntimeException("ERROR: variable ya declarada");
+            }else{
+                tablasimb.put(name, value);
+            }
+       }
     }
 
-    public void modificarvalor(String name, Object valor){
-        if(tablasimb.containsKey(name)){
-            tablasimb.put(name, valor);
-        }else if(texterna != null){
-            if(texterna.yaExiste(name)){
-                texterna.modificarvalor(name, valor);
+   
+
+     public void modificarvalor(String name, Object valor){
+        if(texterna!=null)
+        {
+            if(texterna.yaExiste(name))
+            {
+                tablasimb.put(name, valor);
+                
             }else{
-                throw new RuntimeException("La variable indicada no está declarada.");
+                throw new RuntimeException("ERROR: Variable no declarada");
             }
         }else{
-            throw new RuntimeException("La variable indicada no está declarada.");
+            if(tablasimb.containsKey(valor))
+                tablasimb.put(name, valor);
+            else
+                throw new RuntimeException("ERROR: variable no declarada");
         }
     }
 }
