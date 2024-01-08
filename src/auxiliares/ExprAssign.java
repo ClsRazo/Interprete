@@ -24,7 +24,7 @@ public class ExprAssign extends Expression{
     @Override
     public Object solve(TablaSimbolos tabla){
         if(tabla.yaExiste(name.lexema)){
-            tabla.agregarSimbolo(name.lexema, value.solve(tabla));
+            tabla.modificarvalor(name.lexema, value.solve(tabla));
             return true;
         }else{
             throw new RuntimeException("La variable indicada no está declarada.");

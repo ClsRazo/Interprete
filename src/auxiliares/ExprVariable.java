@@ -1,6 +1,5 @@
 package auxiliares;
 
-import javax.management.RuntimeErrorException;
 
 import interprete.TablaSimbolos;
 import interprete.Token;
