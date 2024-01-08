@@ -14,12 +14,11 @@ public class StmtBlock extends Statement{
 
     @Override
     public void exec(TablaSimbolos tabla){
-                                //tabla "principal"
-        for(Statement st:statements)
-        {
-            st.exec(tabla); 
+        //tabla "principal" del bloque
+        TablaSimbolos tactual = new TablaSimbolos(tabla);
+        for(Statement st:statements){
+            st.exec(tactual);
         }
-        
     }
     
 }

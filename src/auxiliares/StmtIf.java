@@ -15,16 +15,15 @@ public class StmtIf extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-        boolean evaluacion = (boolean) condition.solve();
-        if(evaluacion)
-        {
-            if(thenBranch!=null)
-                thenBranch.exec(tabla);
-            else{
-                throw new RuntimeException("ERROR: sentencia IF sin cuerpo");
-            }
-            if(elseBranch!=null)
-            {
+        if(condition.solve(tabla) instanceof Boolean){
+            boolean evaluacion = (boolean) condition.solve(tabla);
+            if(evaluacion == true){
+                if(thenBranch!=null)
+                    thenBranch.exec(tabla);
+                else{
+                    throw new RuntimeException("Error: Sentencia IF sin cuerpo");
+                }
+            }else if(elseBranch!=null){
                 elseBranch.exec(tabla);
             }
         }

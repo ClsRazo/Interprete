@@ -11,7 +11,7 @@ public class StmtPrint extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-        Object valor=expression.solve();
+        Object valor=expression.solve(tabla);
         System.out.println(""+valor);
     }
 }

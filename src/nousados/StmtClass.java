@@ -1,9 +1,13 @@
-package auxiliares;
+package nousados;
 
 import interprete.TablaSimbolos;
 import interprete.Token;
 
 import java.util.List;
+
+import auxiliares.ExprVariable;
+import auxiliares.Statement;
+import auxiliares.StmtFunction;
 
 public class StmtClass extends Statement {
     final Token name;

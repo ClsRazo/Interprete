@@ -20,21 +20,14 @@ public class StmtFunction extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-        if(tabla.yaExiste(name.lexema)) //función encontrada
-        {
-            //ejecución del bloque, si no es nula, se ejecuta
-            if(body!=null)
-            {
-                //ejecutar el bloque con la tabla de símbolos que se tiene hasta el momento
-                //se le pasan los parámetros para guardarlos en la tabla de símbolos
-                body.exec(tabla);
-
-            }else{
-                throw new RuntimeException("ERROR: Función sin cuerpo");
-            }
+        if(tabla.yaExiste(name.lexema)){ //función encontrada
+            throw new RuntimeException("Error: Función ya declarada.");
         }else{
-            //se agrega la funcion a la tabla de simbolos
             tabla.agregarSimbolo(name.lexema, this);
+            TablaSimbolos tabFun = new TablaSimbolos(tabla);
+            for (Token tk: params){
+                tabFun.agregarSimbolo(tk.lexema, null);
+            }
         }
     }
 }

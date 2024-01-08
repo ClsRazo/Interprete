@@ -12,7 +12,7 @@ public class ASDR{
     private boolean hayErrores = false;
     private Token preanalisis;
     private final List<Token> tokens;
-    public final TablaSimbolos tabla = new TablaSimbolos();
+    //public final TablaSimbolos tabla = new TablaSimbolos();
     public ASDR(List<Token> tokens){
         this.tokens = tokens;
         preanalisis = this.tokens.get(i);
@@ -24,10 +24,12 @@ public class ASDR{
         if(!(preanalisis.tipo == TipoToken.EOF) && !hayErrores){
             List<Statement> statements = PROGRAM();
             if(preanalisis.tipo == TipoToken.EOF && !hayErrores){
-                System.out.println("Consulta valida");
+                //System.out.println("Consulta Sintactica valida");
+                AnalizadorSem AnSemantico = new AnalizadorSem(statements);
+                AnSemantico.Analizador();
                 return  true;
             }else {
-                System.out.println("Consulta no valida");
+                System.out.println("Error Sintactico Encontrado");
                 return false;
             }
         }

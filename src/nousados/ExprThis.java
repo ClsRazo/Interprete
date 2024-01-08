@@ -1,5 +1,6 @@
 package nousados;
 
+import interprete.TablaSimbolos;
 import auxiliares.Expression;
 
 public class ExprThis extends Expression{
@@ -10,7 +11,7 @@ public class ExprThis extends Expression{
     }
 
     @Override
-    public Object solve(){
+    public Object solve(TablaSimbolos tabla){
         return null;
     }
 }

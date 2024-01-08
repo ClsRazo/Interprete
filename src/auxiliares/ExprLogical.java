@@ -1,5 +1,6 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
 import interprete.Token;
 
 public class ExprLogical extends Expression{
@@ -14,9 +15,11 @@ public class ExprLogical extends Expression{
     }
 
     @Override
-    public Object solve(){
-        Object leftValue= left.solve();
-        Object rightValue = right.solve();
+    public Object solve(TablaSimbolos tabla){
+        Object leftValue= left.solve(tabla);
+        Object rightValue = right.solve(tabla);
+
+        // if(leftValue instanceof Boolean && rightValue instanceof Boolean)
 
         switch (operator.tipo) {
             case AND:

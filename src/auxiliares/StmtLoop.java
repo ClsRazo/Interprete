@@ -13,10 +13,12 @@ public class StmtLoop extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-
-        while(!(boolean)condition.solve())
-        {
-            body.exec(tabla);
+        if(condition.solve(tabla) instanceof Boolean){
+            while((boolean)condition.solve(tabla)){
+                body.exec(tabla);
+            }
+        }else{
+            throw new RuntimeException("Error: El ciclo no es capaz de soportar la condición, no es Booleana.\n");
         }
     }
 }

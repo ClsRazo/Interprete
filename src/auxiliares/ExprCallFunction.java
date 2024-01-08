@@ -3,6 +3,7 @@ package auxiliares;
 import interprete.TablaSimbolos;
 import interprete.Token;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExprCallFunction extends Expression{
@@ -17,11 +18,13 @@ public class ExprCallFunction extends Expression{
     }
 
     @Override
-    public Object solve(/*TablaSimbolos tabla*/){
-        for(Expression exp:arguments)
+    public Object solve(TablaSimbolos tabla){
+        final ArrayList<Object> solvedExp=new ArrayList<>();
+        //Que devuelve?
+        for(Expression ex:arguments)
         {
-            //tabla.agregarSimbolo(exp.solve().toString(), exp.solve());
+            solvedExp.add(ex.solve(tabla));
         }
-        return null;
+        return solvedExp;
     }
 }

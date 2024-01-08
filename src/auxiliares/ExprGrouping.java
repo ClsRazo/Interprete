@@ -1,5 +1,7 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
+
 public class ExprGrouping extends Expression {
     final Expression expression;
 
@@ -8,7 +10,8 @@ public class ExprGrouping extends Expression {
     }
 
     @Override
-    public Object solve(){
-         // las expresiones se retornan con su valor resuelto, ya sea boolean o numerico  
-    return expression.solve();}
+    public Object solve(TablaSimbolos tabla){
+        // las expresiones se retornan con su valor resuelto, ya sea boolean o numerico  
+        return expression.solve(tabla);
+    }
 }
