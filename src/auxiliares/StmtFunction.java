@@ -5,8 +5,6 @@ import interprete.Token;
 
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
-
 public class StmtFunction extends Statement {
     final Token name;
     final List<Token> params;
