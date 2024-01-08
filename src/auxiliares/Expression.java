@@ -4,5 +4,5 @@ import interprete.TablaSimbolos;
 
 
 abstract public class Expression {
-    public abstract Object solve();
+    public abstract Object solve(TablaSimbolos tabla);
 }

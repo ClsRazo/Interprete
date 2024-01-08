@@ -1,5 +1,6 @@
 package nousados;
 
+import interprete.TablaSimbolos;
 import auxiliares.Expression;
 import interprete.Token;
 
@@ -13,7 +14,7 @@ public class ExprGet extends Expression{
     }
 
     @Override
-    public Object solve(){
+    public Object solve(TablaSimbolos tabla){
         return null;
     }
 }

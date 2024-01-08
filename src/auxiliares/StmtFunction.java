@@ -23,7 +23,7 @@ public class StmtFunction extends Statement {
         if(tabla.yaExiste(name.lexema)){ //función encontrada
             /*procedimiento para tokens de parámetros */
 
-
+            // tabla.agregarSimbolo(name.lexema, this);
             //ejecución del bloque
             if(body!=null){
                 //ejecutar el bloque con la tabla de símbolos que se tiene hasta el momento

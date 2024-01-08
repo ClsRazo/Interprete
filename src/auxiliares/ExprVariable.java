@@ -1,5 +1,7 @@
 package auxiliares;
 
+import javax.management.RuntimeErrorException;
+
 import interprete.TablaSimbolos;
 import interprete.Token;
 
@@ -11,8 +13,11 @@ public class ExprVariable extends Expression {
     }
 
     @Override
-    public Object solve(){
-        //Solo devuelve o checa en la tabla de simbolos que exista?
-        return name;
+    public Object solve(TablaSimbolos tabla){
+        if(tabla.yaExiste(name.lexema)){
+            return tabla.obtenervalor(name.lexema);
+        }else{
+            throw new RuntimeException("La variable indicada no está declarada.");
+        }
     }
 }

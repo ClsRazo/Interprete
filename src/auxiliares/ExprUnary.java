@@ -1,5 +1,6 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
 import interprete.Token;
 
 public class ExprUnary extends Expression{
@@ -12,13 +13,13 @@ public class ExprUnary extends Expression{
     }
 
       @Override
-    public Object solve(){
+    public Object solve(TablaSimbolos tabla){
         switch (operator.tipo) {
             case BANG:
-                return !isTruthy(right.solve());
+                return !isTruthy(right.solve(tabla));
             case MINUS:
-                Object rightValue = right.solve();
-                if(!(rightValue instanceof Double)){
+                Object rightValue = right.solve(tabla);
+                if(!(rightValue instanceof Double || rightValue instanceof Integer)){
                     throw new RuntimeException("El operando debe ser un número para el operador unario '" + operator.lexema + "'.");
                 }
                 return -((Double)rightValue);

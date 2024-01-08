@@ -22,8 +22,12 @@ public class ExprAssign extends Expression{
     }
 
     @Override
-    public Object solve(){
-        //Solo devuelve la expresión resuelta o debe checar y modificar la variable en la tabla de simbolos?
-        return value.solve();
+    public Object solve(TablaSimbolos tabla){
+        if(tabla.yaExiste(name.lexema)){
+            tabla.agregarSimbolo(name.lexema, value.solve(tabla));
+            return true;
+        }else{
+            throw new RuntimeException("La variable indicada no está declarada.");
+        }
     }
 }

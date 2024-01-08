@@ -1,7 +1,9 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
 import interprete.TipoToken;
 import interprete.Token;
+import javafx.scene.control.Tab;
 
 public class ExprBinary extends Expression{
     final Expression left;
@@ -15,9 +17,9 @@ public class ExprBinary extends Expression{
     }
 
     @Override
-    public Object solve() {
-        Object leftValue = left.solve();
-        Object rightValue = right.solve();
+    public Object solve(TablaSimbolos tabla) {
+        Object leftValue = left.solve(tabla);
+        Object rightValue = right.solve(tabla);
 
         //Verifica el tipo de operador
         switch(operator.tipo){
@@ -27,7 +29,7 @@ public class ExprBinary extends Expression{
                 return leftValue.equals(rightValue);
             case GREATER:
                 //Asumimos que los datos son tipo double para la comparación
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     return (Double) leftValue > (Double) rightValue;
                 }else{
                     //Error en caso de que no sean double
@@ -35,7 +37,7 @@ public class ExprBinary extends Expression{
                 }
             case GREATER_EQUAL:
                 //Asumimos que los datos son tipo double para la comparación
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     return (Double)leftValue >= (Double)rightValue;
                 }else{
                     //Error en caso de que no sean double
@@ -43,7 +45,7 @@ public class ExprBinary extends Expression{
                 }
             case LESS:
                 //Asumimos que los datos son tipo double para la comparación
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     return (Double)leftValue < (Double)rightValue;
                 }else{
                     //Error en caso de que no sean double
@@ -51,21 +53,21 @@ public class ExprBinary extends Expression{
                 }
             case LESS_EQUAL:
                 //Asumimos que los datos son tipo double para la comparación
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     return (Double)leftValue <= (Double)rightValue;
                 }else{
                     //Error en caso de que no sean double
                     throw new RuntimeException("Tipos no compatibles para la comparación: " + leftValue.getClass() + " y " + rightValue.getClass());
                 }
             case MINUS:
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     //Realiza la resta (asumiendo que leftValue y rightValue son números o variables numericas)
                     return (Double)leftValue - (Double)rightValue;
                 }else{
                     throw new RuntimeException("Tipos no compatibles para la resta: " + leftValue.getClass() + " y " + rightValue.getClass());
                 }
             case PLUS:
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     //Realiza la suma (asumiendo que leftValue y rightValue son números o variables numericas)
                     return (Double)leftValue + (Double)rightValue;
                 }else if(leftValue instanceof String || rightValue instanceof String){
@@ -76,7 +78,7 @@ public class ExprBinary extends Expression{
                     throw new RuntimeException("Tipos no compatibles para la suma: " + leftValue.getClass() + " y " + rightValue.getClass());
                 }
             case SLASH:
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     if((Double)rightValue != 0.0){
                         //Realiza la división (asumiendo que leftValue y rightValue son números o variables numericas)
                         return (Double)leftValue / (Double)rightValue;
@@ -87,7 +89,7 @@ public class ExprBinary extends Expression{
                     throw new RuntimeException("Tipos no compatibles para la división: " + leftValue.getClass() + " y " + rightValue.getClass());
                 }
             case STAR:
-                if(leftValue instanceof Double && rightValue instanceof Double){
+                if((leftValue instanceof Double || leftValue instanceof Integer) && (rightValue instanceof Double || rightValue instanceof Integer)){
                     //Realiza la multiplicación (asumiendo que leftValue y rightValue son números o variables numericas)
                     return (Double)leftValue * (Double)rightValue;
                 }else{

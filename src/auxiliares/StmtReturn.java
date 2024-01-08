@@ -11,7 +11,6 @@ public class StmtReturn extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-        Object valor=value.solve();
-        
+        value.solve(tabla);
     }
 }

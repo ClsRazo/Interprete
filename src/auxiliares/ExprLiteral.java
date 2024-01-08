@@ -1,5 +1,7 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
+
 public class ExprLiteral extends Expression {
     final Object value;
 
@@ -8,7 +10,7 @@ public class ExprLiteral extends Expression {
     }
 
     @Override
-    public Object solve(){
+    public Object solve(TablaSimbolos tabla){
         return value;
     }
 }

@@ -14,14 +14,11 @@ public class StmtVar extends Statement {
     }
     @Override
     public void exec(TablaSimbolos tabla){
-        
-        if(tabla.yaExiste(name.lexema))
-        {
-            System.out.println("Variable ya declarada");
-            //error?
+        if(tabla.yaExiste(name.lexema)){
+            throw new RuntimeException("Error: Variable ya declarada.");
         }else{
-            //la llave es el nombre de la variable, al ser hashmap no puede haber  variables duplicadas
-            tabla.agregarSimbolo(name.lexema, initializer.solve());
+            //la llave es el nombre de la variable, al ser hashmap no puede haber variables duplicadas
+            tabla.agregarSimbolo(name.lexema, initializer.solve(tabla));
         }
     }
 }

@@ -12,6 +12,6 @@ public class StmtExpression extends Statement {
     @Override
     public void exec(TablaSimbolos tabla){
         //Solo resuelve?
-        expression.solve();
+        expression.solve(tabla);
     }
 }
