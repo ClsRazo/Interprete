@@ -190,6 +190,7 @@ public class ASDR{
 
                     body = new StmtLoop(condicion, body);
 
+                    //i=0
                     if(inicial != null){
                         body = new StmtBlock(Arrays.asList(inicial, body));
                     }

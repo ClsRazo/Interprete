@@ -22,20 +22,19 @@ public class StmtFunction extends Statement {
     public void exec(TablaSimbolos tabla){
         if(tabla.yaExiste(name.lexema)) //función encontrada
         {
-            /*procedimiento para tokens de parámetros */
-
-
-            //ejecución del bloque
+            //ejecución del bloque, si no es nula, se ejecuta
             if(body!=null)
             {
                 //ejecutar el bloque con la tabla de símbolos que se tiene hasta el momento
+                //se le pasan los parámetros para guardarlos en la tabla de símbolos
                 body.exec(tabla);
+
             }else{
                 throw new RuntimeException("ERROR: Función sin cuerpo");
             }
-
         }else{
-            //error?
+            //se agrega la funcion a la tabla de simbolos
+            tabla.agregarSimbolo(name.lexema, this);
         }
     }
 }

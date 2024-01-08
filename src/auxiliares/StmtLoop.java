@@ -13,9 +13,10 @@ public class StmtLoop extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-        /*while(condition.solve())
+
+        while(!(boolean)condition.solve())
         {
             body.exec(tabla);
-        }*/
+        }
     }
 }

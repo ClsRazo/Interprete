@@ -21,7 +21,7 @@ public class StmtIf extends Statement {
             if(thenBranch!=null)
                 thenBranch.exec(tabla);
             else{
-                System.out.println("ERROR: Sentencia IF sin cuerpo");
+                throw new RuntimeException("ERROR: sentencia IF sin cuerpo");
             }
             if(elseBranch!=null)
             {

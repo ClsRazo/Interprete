@@ -1,5 +1,6 @@
 package auxiliares;
 
+import interprete.TablaSimbolos;
 import interprete.Token;
 
 import java.util.List;
@@ -16,7 +17,11 @@ public class ExprCallFunction extends Expression{
     }
 
     @Override
-    public Object solve(){
+    public Object solve(/*TablaSimbolos tabla*/){
+        for(Expression exp:arguments)
+        {
+            //tabla.agregarSimbolo(exp.solve().toString(), exp.solve());
+        }
         return null;
     }
 }
