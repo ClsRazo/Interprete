@@ -17,7 +17,7 @@ public class StmtBlock extends Statement{
         {
             if(st instanceof StmtIf || st instanceof StmtLoop)
             {
-                //cada que se cree una nueva tabla, la tabla principal pasa como externa (bloque superior)
+                //cada que se cree una nueva tabla, la tabla "principal" pasa como externa (bloque superior)
                 TablaSimbolos tactual=new TablaSimbolos(tabla);
                 st.exec(tactual);
             }else{

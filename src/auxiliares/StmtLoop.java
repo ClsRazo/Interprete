@@ -15,7 +15,7 @@ public class StmtLoop extends Statement {
     public void exec(TablaSimbolos tabla){
         /*while(condition.solve())
         {
-            body.exec();
+            body.exec(tabla);
         }*/
     }
 }

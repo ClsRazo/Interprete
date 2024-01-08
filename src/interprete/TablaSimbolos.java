@@ -42,7 +42,7 @@ public class TablaSimbolos {
         //pasa a ser la tabla "actual"
         else if(texterna!=null)
         {
-                return texterna.obtenervalor(name);
+            return texterna.obtenervalor(name);
         }else{
             throw new RuntimeException("Variable no definida");
         }
