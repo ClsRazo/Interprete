@@ -19,23 +19,25 @@ public class ExprLogical extends Expression{
         Object leftValue= left.solve(tabla);
         Object rightValue = right.solve(tabla);
 
-        // if(leftValue instanceof Boolean && rightValue instanceof Boolean)
-
+        if(leftValue instanceof Boolean && rightValue instanceof Boolean){
+            boolean leftBoolean = (boolean) leftValue;
+            boolean rightBoolean = (boolean) rightValue;
         switch (operator.tipo) {
             case AND:
-                return isTruthy(leftValue) && isTruthy(rightValue);
+                return leftBoolean && rightBoolean;
             case OR:
-                return isTruthy(leftValue) || isTruthy(rightValue);
+                return leftBoolean ||  rightBoolean;
             default:
             throw new RuntimeException("Operador lógico no soportado: " + operator.lexema);
         }
+    } else {
+            //mensaje de error en el caso que leftValue o rightValue no sean booleans
+            throw new RuntimeException("Los valores no son booleanos");
+        }
     }
 
-    //Función auxiliar para verificar si un valor es verdadero (truthy)
-    private boolean isTruthy(Object value) {
-        if (value == null) return false;
-        if (value instanceof Boolean) return (boolean) value;
-        return true;
+    //Función auxiliar para verificar si un valor es verdadero 
+    private boolean isBoolean(Object value) {
+       return value instanceof Boolean;
     }
 }
-

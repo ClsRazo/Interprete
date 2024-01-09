@@ -14,24 +14,28 @@ public class ExprUnary extends Expression{
 
       @Override
     public Object solve(TablaSimbolos tabla){
+        Double rightDouble;
         switch (operator.tipo) {
             case BANG:
-                return !isTruthy(right.solve(tabla));
-            case MINUS:
                 Object rightValue = right.solve(tabla);
+                if(!isBoolean(rightValue)){
+                        throw new RuntimeException("El operando debe ser un booleano para el operador unario '" + operator.lexema + "'.");
+                    }
+                return !((boolean)rightValue);
+            case MINUS:
+                rightValue = right.solve(tabla);
                 if(!(rightValue instanceof Double || rightValue instanceof Integer)){
                     throw new RuntimeException("El operando debe ser un número para el operador unario '" + operator.lexema + "'.");
                 }
-                return -((Double)rightValue);
+                rightDouble = (rightValue instanceof Integer) ? ((Integer)rightValue).doubleValue() : (Double) rightValue;
+                return -(rightDouble);
             default:
                 throw new RuntimeException("Operador no soportado: " + operator.lexema);
         }
     }
 
-    //Función auxiliar para verificar si un valor es verdadero (truthy)
-    private boolean isTruthy(Object value) {
-        if (value == null) return false;
-        if (value instanceof Boolean) return (boolean) value;
-        return true;
+    //Función auxiliar para verificar si es un booleano
+    private boolean isBoolean(Object value) {
+        return value instanceof Boolean;
     }
 }
