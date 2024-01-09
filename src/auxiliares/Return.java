@@ -8,6 +8,11 @@ package auxiliares;
  *
  * @author pande
  */
-public class Return {
-    
+public class Return extends RuntimeException{
+    final Object valor;
+
+    Return(Object valor){
+        super(null, null, false, false);
+        this.valor=valor;
+    }
 }

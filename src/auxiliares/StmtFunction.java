@@ -22,10 +22,10 @@ public class StmtFunction extends Statement {
             throw new RuntimeException("Error: Función ya declarada.");
         }else{
             tabla.agregarSimbolo(name.lexema, this);
-            TablaSimbolos tabFun = new TablaSimbolos(tabla);
-            for (Token tk: params){
-                tabFun.agregarSimbolo(tk.lexema, null);
-            }
+            // TablaSimbolos tabFun = new TablaSimbolos(tabla);
+            // for (Token tk: params){
+            //     tabFun.agregarSimbolo(tk.lexema, null);
+            // }
         }
     }
 }

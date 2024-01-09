@@ -6,11 +6,14 @@
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprVariable.java</file>
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtBlock.java</file>
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/interprete/ASDR.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprLogical.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtReturn.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprUnary.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprCallFunction.java</file>
+            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/StmtVar.java</file>
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprBinary.java</file>
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprAssign.java</file>
-            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprLogical.java</file>
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprLiteral.java</file>
-            <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/auxiliares/ExprUnary.java</file>
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/interprete/AnalizadorSem.java</file>
             <file>file:/C:/Users/pande/Desktop/AnalizadorFinal/Interprete/src/interprete/TablaSimbolos.java</file>
         </group>
