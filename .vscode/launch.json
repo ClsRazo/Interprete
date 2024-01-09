@@ -17,7 +17,7 @@
             "request": "launch",
             "mainClass": "interprete.Interprete",
             "projectName": "Interprete_905df4d3",
-            "args": ["C:\\Users\\Carlo\\OneDrive\\Documentos\\5to Semestre\\Compiladores\\1erParcial\\ElGit\\Pruebas\\Prueba8.txt"]
+            "args": ["C:\\Users\\Carlo\\OneDrive\\Documentos\\5to Semestre\\Compiladores\\1erParcial\\ElGit\\Pruebas\\Prueba4.txt"]
         }
     ]
 }
