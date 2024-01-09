@@ -43,7 +43,13 @@ public class ExprCallFunction extends Expression{
                 }
 
                 //Ejecutamos la función
-                newFun.body.exec(functionTable);
+                
+                try{
+                    newFun.body.exec(functionTable);
+                }catch(Return r){
+                    return r.valor;
+                }
+
                 //true para confirmar que se ejecutó?
                 return true;
             }else{

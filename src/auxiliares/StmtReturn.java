@@ -14,9 +14,9 @@ public class StmtReturn extends Statement {
         //si no hay un retorno, retorna nulo
         if(value.solve(tabla)!=null)
         {
-            throw new Return(null);
-        }else{ //al haber un tipo de retorno, usa la clase retorno para lanzar una excepción con el valor de retorno.
             throw new Return(value.solve(tabla));
+        }else{ //al haber un tipo de retorno, usa la clase retorno para lanzar una excepción con el valor de retorno.
+            throw new Return(null);
         }
             
     }
