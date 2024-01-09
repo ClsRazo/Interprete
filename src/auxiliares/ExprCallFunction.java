@@ -1,7 +1,7 @@
 package auxiliares;
 
 import interprete.TablaSimbolos;
-import interprete.Token;
+//import interprete.Token;
 
 import java.util.ArrayList;
 import java.util.List;

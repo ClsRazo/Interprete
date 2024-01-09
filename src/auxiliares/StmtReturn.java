@@ -11,6 +11,8 @@ public class StmtReturn extends Statement {
 
     @Override
     public void exec(TablaSimbolos tabla){
-        value.solve(tabla);
+        if(value.solve(tabla) instanceof Double)
+            throw new RuntimeException(value.solve(tabla));
+            
     }
 }

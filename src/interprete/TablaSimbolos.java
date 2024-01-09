@@ -67,10 +67,7 @@ public class TablaSimbolos {
             }
        }
     }
-
-   
-
-     public void modificarvalor(String name, Object valor){
+    public void modificarvalor(String name, Object valor){
         if(texterna!=null)
         {
             if(texterna.yaExiste(name))
