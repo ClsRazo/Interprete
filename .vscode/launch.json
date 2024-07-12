@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            //current file
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "args": "C:\\Users\\Carlo\\OneDrive\\Documentos\\5to Semestre\\Compiladores\\1erParcial\\ElGit\\Pruebas\\Prueba1.txt"
+        },
+        {
+            //main
+            "type": "java",
+            "name": "Interprete",
+            "request": "launch",
+            "mainClass": "interprete.Interprete",
+            "projectName": "Interprete_905df4d3",
+            "args": ["C:\\Users\\Carlo\\OneDrive\\Documentos\\5to Semestre\\Compiladores\\1erParcial\\ElGit\\Pruebas\\Prueba4.txt"]
+        }
+    ]
+}
